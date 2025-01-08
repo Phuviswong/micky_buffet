@@ -14,6 +14,8 @@
     --color-secondary: #F5ECD5;
     --color-accent: #578E7E;
     --color-dark: #3D3D3D;
+
+    --color-accent-hover: #3f7767;
 }
 
 body {

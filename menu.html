@@ -7,9 +7,176 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/cutom/style.css">
     <link rel="stylesheet" href="assets/cutom/custom.css">
+    <link rel="stylesheet" href="assets/cutom/color.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        
+    </style>
 </head>
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Micky Buffet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My order
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end custom-dropdown">
+                            <li>
+                                <div class="row text-center">
+                                    <div class="col-md-4">ชื่ออาหาร</div>
+                                    <div class="col-md-4">จำนวน</div>
+                                    <div class="col-md-4">บาท</div>
+                                </div>
+                            </li>
+                            <hr>
+                            <div id="cart-items"></div>
+                            <hr>
+                            <center>
+                                <a href="#" class="btn btn-primary w-100">สั่งออเดอร์</a>
+                            </center>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>    
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">เมนูอาหาร</h1>
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 1">
+                        <h5 class="card-title">ข้าวผัด</h5>
+                        <p class="card-title">ข้าวผัดร้อนๆ พร้อมเครื่องเคียง</p>
+                        <p class="card-title text-success"><strong>ราคา: 50 บาท</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary button-minus" type="button">-</button>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                    <button class="btn btn-outline-secondary button-plus" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary add-to-cart">เพิ่มลงตะกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 2">
+                        <h5 class="card-title mt-2">ต้มยำกุ้ง</h5>
+                        <p class="card-title">ต้มยำกุ้งน้ำข้นรสชาติเข้มข้น</p>
+                        <p class="card-title text-success"><strong>ราคา: 120 บาท</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary button-minus" type="button">-</button>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                    <button class="btn btn-outline-secondary button-plus" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary add-to-cart">เพิ่มลงตะกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 3">
+                        <h5 class="card-title mt-2">ส้มตำไทย</h5>
+                        <p class="card-title">ส้มตำไทยแซ่บนัว ปรุงสดใหม่</p>
+                        <p class="card-title text-success"><strong>ราคา: 60 บาท</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary button-minus" type="button">-</button>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                    <button class="btn btn-outline-secondary button-plus" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary add-to-cart">เพิ่มลงตะกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.button-minus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const quantityInput = this.nextElementSibling;
+                    let currentValue = parseInt(quantityInput.value);
+                    if (currentValue > 1) {
+                        quantityInput.value = currentValue - 1;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.button-plus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const quantityInput = this.previousElementSibling;
+                    let currentValue = parseInt(quantityInput.value);
+                    quantityInput.value = currentValue + 1;
+                });
+            });
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    const title = card.querySelector('.card-title').innerText;
+                    const quantity = parseInt(card.querySelector('.quantity-input').value);
+                    const price = card.querySelector('.text-success strong').innerText.replace('ราคา: ', '').replace(' บาท', '');
+
+                    addToCart(title, quantity, price);
+
+                    // Reset quantity input to 1
+                    card.querySelector('.quantity-input').value = 1;
+                });
+            });
+
+            function addToCart(title, quantity, price) {
+                const cartItems = document.getElementById('cart-items');
+                let existingItem = Array.from(cartItems.children).find(item => item.querySelector('.cart-item-title').innerText === title);
+
+                if (existingItem) {
+                    let existingQuantity = existingItem.querySelector('.cart-item-quantity');
+                    existingQuantity.innerText = parseInt(existingQuantity.innerText) + quantity;
+                } else {
+                    const item = document.createElement('div');
+                    item.classList.add('row', 'text-center');
+                    item.innerHTML = `
+                        <div class="col-md-4 cart-item-title">${title}</div>
+                        <div class="col-md-4 cart-item-quantity">${quantity}</div>
+                        <div class="col-md-4">${price}</div>
+                    `;
+                    cartItems.appendChild(item);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
