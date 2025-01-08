@@ -27,7 +27,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             My order
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end custom-dropdown">
+                        <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
                             <li>
                                 <div class="row text-center">
                                     <div class="col-md-4">ชื่ออาหาร</div>
@@ -38,8 +38,13 @@
                             <hr>
                             <div id="cart-items"></div>
                             <hr>
+                            <div class="row text-center">
+                                <div class="col-md-8"><strong>รวมราคา:</strong></div>
+                                <div class="col-md-4" id="total-price">0 บาท</div>
+                            </div>
+                            <hr>
                             <center>
-                                <a href="#" class="btn btn-primary w-100">สั่งออเดอร์</a>
+                                <a href="#" class="btn btn-primary w-100">สั่งซื้อ</a>
                             </center>
                         </ul>
                     </li>
@@ -55,9 +60,32 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 1">
-                        <h5 class="card-title">ข้าวผัด</h5>
-                        <p class="card-title">ข้าวผัดร้อนๆ พร้อมเครื่องเคียง</p>
+                        <img src="assets/image/หมู3ชั้นสไลด์.jpg" class="image-menu" alt="อาหาร 1">
+                        <h5 class="card-title">หมู3ชั้นสไลด์</h5>
+                        <p class="card-title">ในเซ็ตนี้ จะมีหมู3ชั้นสไลด์และผัก,ไข่ไก่</p>
+                        <p class="card-title text-success"><strong>ราคา: 80 บาท</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary button-minus" type="button">-</button>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                    <button class="btn btn-outline-secondary button-plus" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary add-to-cart">เพิ่มลงตะกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="assets/image/เครื่องดื่ม.jpg" class="image-menu" alt="อาหาร 2">
+                        <h5 class="card-title mt-2">เครื่องดื่ม</h5>
+                        <p class="card-title">สามารถเลือกเครื่องดื่มได้ น้ำเปล่า,น้ำอัดลม,น้ำสมุนไพร ไม่อั้น!!</p>
                         <p class="card-title text-success"><strong>ราคา: 50 บาท</strong></p>
                         <div class="row">
                             <div class="col-md-6">
@@ -78,10 +106,10 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 2">
-                        <h5 class="card-title mt-2">ต้มยำกุ้ง</h5>
-                        <p class="card-title">ต้มยำกุ้งน้ำข้นรสชาติเข้มข้น</p>
-                        <p class="card-title text-success"><strong>ราคา: 120 บาท</strong></p>
+                        <img src="assets/image/เซ็ตหมู 1 ชุด.jpg" class="image-menu" alt="อาหาร 3">
+                        <h5 class="card-title mt-2">เซ็ตหมู 1 ชุด</h5>
+                        <p class="card-title">ใน 1 ชุดนี้จะมี น้ำเปล่าขวดใหญ่ 1 ขวด,ผัก,หมูและอื่นๆ</p>
+                        <p class="card-title text-success"><strong>ราคา: 300 บาท</strong></p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -101,10 +129,10 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://via.placeholder.com/150" class="image-menu" alt="อาหาร 3">
-                        <h5 class="card-title mt-2">ส้มตำไทย</h5>
-                        <p class="card-title">ส้มตำไทยแซ่บนัว ปรุงสดใหม่</p>
-                        <p class="card-title text-success"><strong>ราคา: 60 บาท</strong></p>
+                        <img src="assets/image/น้ำชุป.jpg" class="image-menu" alt="อาหาร 3">
+                        <h5 class="card-title mt-2">น้ำซุป</h5>
+                        <p class="card-title">สามารถเลือกน้ำซุปได้ว่าจะเอาน้ำอะไร มี น้ำซุปธรรมดา,น้ำซุปหม่าล่า,น้ำซุปน้ำดำ </p>
+                        <p class="card-title text-success"><strong>ราคา: 50 บาท</strong></p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -120,6 +148,30 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="assets/image/บุ.jpg" class="image-menu" alt="อาหาร 3">
+                        <h5 class="card-title mt-2">บุฟเฟ่ต์ </h5>
+                        <p class="card-title">ในเซ็ตนี้จะได้ทุกอย่างในร้านสามารถเลือกได้ทุกอย่าง</p>
+                        <p class="card-title text-success"><strong>ราคา: 499 บาท</strong></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary button-minus" type="button">-</button>
+                                    <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                    <button class="btn btn-outline-secondary button-plus" type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary add-to-cart">เพิ่มลงตะกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -175,6 +227,21 @@
                     `;
                     cartItems.appendChild(item);
                 }
+
+                updateTotalPrice();
+            }
+
+            function updateTotalPrice() {
+                const cartItems = document.getElementById('cart-items');
+                let totalPrice = 0;
+
+                Array.from(cartItems.children).forEach(item => {
+                    const quantity = parseInt(item.querySelector('.cart-item-quantity').innerText);
+                    const price = parseFloat(item.querySelector('.col-md-4:last-child').innerText);
+                    totalPrice += quantity * price;
+                });
+
+                document.getElementById('total-price').innerText = `${totalPrice} บาท`;
             }
         });
     </script>
