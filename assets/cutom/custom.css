@@ -1,0 +1,55 @@
+.center-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+}
+
+.text-center-home {
+    font-size: 5rem;
+    padding: 2rem 5rem;
+    background-color: var(--color-accent);
+}
+
+.year-home {
+    padding: .5rem 3rem;
+    background-color: var(--color-secondary);
+    color: var(--color-dark); 
+    position: absolute;
+    right: 560px;
+    top: 300px;
+    transform: rotate(10deg) !important;
+}
+
+.progress-bar {
+    width: 42.6rem;
+    height: 10px;
+    background-color: rgba(0, 0, 0, .125);
+    position: absolute;
+    overflow: hidden;
+    margin-top: 20px;
+    top: 461px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background-color: var(--color-primary);
+    width: 0;
+    transition: width 3s linear;
+}
+
+@media (max-width: 768px) {
+    .text-center-home {
+        font-size: 2.5rem;
+        padding: 1rem 2rem;
+    }
+
+    .year-home {
+        right: 20px;
+        top: 345px;
+        padding: .5rem 1.5rem;
+    }
+}
