@@ -1,0 +1,47 @@
+.bg-578E7E{
+    background-color: #CB9C9C !important;
+}
+.text-3D3D3D{
+    color: #3D3D3D !important;
+    text-shadow: 2px 2px 5px #00000065;
+}
+.bg-D9D9D9{
+    background-color: #D9D9D9;
+}
+.bg-B07F7F{
+    background-color: #B07F7F;
+}
+
+
+  .summary-box {
+    border: 2px solid #666; /* สีของกรอบ */
+    border-radius: 5px; /* มุมกรอบมน */
+    padding: 10px; /* เพิ่มพื้นที่ภายใน */
+    background-color: #f3f3f3; /* พื้นหลังภายในกรอบ */
+    width: auto; /* ขนาดขึ้นอยู่กับเนื้อหา */
+    text-align: left;
+  }
+  
+  .text-start {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .btn-danger {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-danger:hover {
+    background-color: #ff6161;
+  }
+  
+.summary-box {
+    background-color: #f3f3f3;
+    border: none;
+  }

@@ -1,0 +1,14 @@
+.custom-hr {
+    border: none;
+    border-top: 1px dashed #000; /* กำหนดเส้นเป็นแบบ dashed (เส้นประ) */
+    text-align: center;
+    width: 50%; /* ปรับความยาวของเส้น hr */
+    margin: 20px auto; /* กำหนดระยะห่างจากขอบบนและล่าง */
+}
+.custom-hr2 {
+    border: none;
+    border-top: 1px dashed #000; /* กำหนดเส้นเป็นแบบ dashed (เส้นประ) */
+    text-align: center;
+    width: 100%; /* ปรับความยาวของเส้น hr */
+    margin: 20px auto; /* กำหนดระยะห่างจากขอบบนและล่าง */
+}
