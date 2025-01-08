@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="assets/cutom/custom.css">
     <link rel="stylesheet" href="assets/cutom/color.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <style>
-        
-    </style>
 </head>
 <body>
 
@@ -44,7 +41,7 @@
                             </div>
                             <hr>
                             <center>
-                                <a href="#" class="btn btn-primary w-100">สั่งซื้อ</a>
+                                <a href="order.html" class="btn btn-primary w-100" id="checkout-button">สั่งซื้อ</a>
                             </center>
                         </ul>
                     </li>
@@ -56,7 +53,7 @@
     <div class="container mt-4">
         <h1 class="text-center mb-4">เมนูอาหาร</h1>
         <div class="row">
-
+            <!-- ตัวอย่างเมนู -->
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
@@ -234,16 +231,63 @@
             function updateTotalPrice() {
                 const cartItems = document.getElementById('cart-items');
                 let totalPrice = 0;
+                let totalQuantity = 0;
 
                 Array.from(cartItems.children).forEach(item => {
                     const quantity = parseInt(item.querySelector('.cart-item-quantity').innerText);
                     const price = parseFloat(item.querySelector('.col-md-4:last-child').innerText);
                     totalPrice += quantity * price;
+                    totalQuantity += quantity;
                 });
 
-                document.getElementById('total-price').innerText = `${totalPrice} บาท`;
+                let discount = 0;
+
+                if (totalQuantity >= 5) {
+                    discount = totalPrice * 0.1;
+                    totalPrice -= discount;
+                }
+
+                document.getElementById('total-price').innerText = `${totalPrice.toFixed(2)} บาท`;
+
+                if (discount > 0) {
+                    if (!document.getElementById('discount-info')) {
+                        const discountRow = document.createElement('div');
+                        discountRow.classList.add('row', 'text-center');
+                        discountRow.id = 'discount-info';
+                        discountRow.innerHTML = `
+                            <div class="col-md-8"><strong>ส่วนลด (10%):</strong></div>
+                            <div class="col-md-4 text-danger">-${discount.toFixed(2)} บาท</div>
+                        `;
+                        cartItems.parentElement.insertBefore(discountRow, cartItems.nextSibling);
+                    } else {
+                        document.getElementById('discount-info').querySelector('.col-md-4').innerText = `-${discount.toFixed(2)} บาท`;
+                    }
+                } else {
+                    const discountRow = document.getElementById('discount-info');
+                    if (discountRow) {
+                        discountRow.remove();
+                    }
+                }
             }
         });
     </script>
+    <script>
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            const cartItems = document.getElementById('cart-items');
+            const items = Array.from(cartItems.children).map(item => ({
+                title: item.querySelector('.cart-item-title').innerText,
+                quantity: item.querySelector('.cart-item-quantity').innerText,
+                price: item.querySelector('.col-md-4:last-child').innerText
+            }));
+    
+            const totalPrice = document.getElementById('total-price').innerText;
+            const discountInfo = document.getElementById('discount-info');
+            const discount = discountInfo ? discountInfo.querySelector('.col-md-4').innerText : '0';
+    
+            // เก็บข้อมูลลง LocalStorage
+            localStorage.setItem('cartItems', JSON.stringify(items));
+            localStorage.setItem('totalPrice', totalPrice);
+            localStorage.setItem('discount', discount);
+        });
+    </script>
 </body>
-</html>

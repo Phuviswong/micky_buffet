@@ -70,13 +70,43 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button class="btn btn-danger mt-3">ย้อนกลับ</button>
-                <a class="btn btn-danger mt-3 ms-3">ยืนยัน</a>
+                <a href="menu.html" class="btn btn-danger mt-3">ย้อนกลับ</a href="menu.html">
             </div>
         </div>
     </div>
 
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const itemsContainer = document.querySelector('.items');
+            const totalPriceContainer = document.querySelector('.summary-box:nth-child(1) h6');
+            const discountContainer = document.querySelector('.summary-box:nth-child(2) h6');
+            const finalPriceContainer = document.querySelector('.summary-box:nth-child(3) h6:last-child');
+    
+            // ดึงข้อมูลจาก LocalStorage
+            const items = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const totalPrice = localStorage.getItem('totalPrice') || '0 บาท';
+            const discount = localStorage.getItem('discount') || '0 บาท';
+    
+            // แสดงรายการสินค้า
+            itemsContainer.innerHTML = '';
+            items.forEach(item => {
+                const itemRow = document.createElement('div');
+                itemRow.className = 'item d-flex justify-content-between align-items-center';
+                itemRow.innerHTML = `
+                    <span>${item.title} x${item.quantity}</span>
+                    <span class="price text-end">ราคา: ${item.price} บาท</span>
+                `;
+                itemsContainer.appendChild(itemRow);
+            });
+    
+            // แสดงข้อมูลราคาส่วนลดและราคาสุทธิ
+            totalPriceContainer.innerText = `รวมก่อนส่วนลด: ${totalPrice}`;
+            discountContainer.innerText = `ส่วนลด (10%): ${discount}`;
+            const finalPrice = parseFloat(totalPrice.replace(' บาท', '')) - parseFloat(discount.replace('-', '').replace(' บาท', ''));
+            finalPriceContainer.innerText = `${finalPrice.toFixed(2)} บาท`;
+        });
+    </script>
+    
 </body>
 </html>
