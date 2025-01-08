@@ -52,4 +52,10 @@
         top: 345px;
         padding: .5rem 1.5rem;
     }
+    h6{
+        font-size: 10px;
+    }
+    .w-25{
+        width: 50% !important;
+    }
 }
