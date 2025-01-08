@@ -7,10 +7,27 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/cutom/style.css">
     <link rel="stylesheet" href="assets/cutom/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
+
+    <div class="center-home animate__animated animate__jackInTheBox">
+        <h1 class="text-center-home">MICKY BUFFET</h1>
+        <div class="progress-bar">
+            <div class="progress-bar-inner"></div>
+        </div>
+        <h3 class="year-home shadow">2025</h3>
+    </div>
     
-    <h5>Hello World</h5>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'menu.html';
+        }, 3000);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.progress-bar-inner').style.width = '100%';
+        });
+    </script>
 </body>
 </html>
